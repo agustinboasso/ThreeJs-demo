@@ -8,8 +8,8 @@ function App() {
     <div className="App">
       {/* <Scene/> */}
       
-       <SceneDos/> 
-      {/* <SceneAmong/> */}
+       {/* <SceneDos/>  */}
+      <SceneAmong/>
     </div>
   );
 }

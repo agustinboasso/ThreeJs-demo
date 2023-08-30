@@ -39,7 +39,7 @@ const SceneAmong = () => {
 
     const gltfLoader = new GLTFLoader()
     gltfLoader.load(
-        './ImportModels/potted_plant_01_4k.gltf',
+        './Characters/Duck/Duck.gltf',
         (gltf)=>{
             gltf.scene.scale.set(0.1, 0.1, 0.1); // Ajusta la escala según tus necesidades
             gltf.scene.position.set(0, 0, 0); // Ajusta la posición según tus necesidades
