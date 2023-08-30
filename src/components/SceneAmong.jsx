@@ -4,6 +4,7 @@ import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 // import{createSphereHDRI} from "./Geometries/SphereHDRI"
 // import {cubeMeshStandardMaterial} from './Geometries/CubeMeshStandard'
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader'
+import { TextureLoader } from "three";
 
 const SceneAmong = () => {
   const mountRef = useRef(null);
@@ -36,13 +37,19 @@ const SceneAmong = () => {
     controls.enableDamping = true; //Genera sensacion de movimiento luego de dejar de presionar el boton del raton
 
     //CARGAR MODELOS 3D IMPORTADOS
+    const textureLoader = new TextureLoader()
+    const texture = textureLoader.load('./Characters/Duck/DuckCM.png')
 
-    const gltfLoader = new GLTFLoader()
-    gltfLoader.load(
-        './Characters/Duck/Duck.gltf',
+    const material = new THREE.MeshStandardMaterial({map: texture})
+
+    const fileUrl = new URL("./Characters/Duck/Duck.gltf", import.meta.url)    
+    const loader = new GLTFLoader()
+    
+    loader.load(
+        fileUrl.href,
         (gltf)=>{
             gltf.scene.scale.set(0.1, 0.1, 0.1); // Ajusta la escala según tus necesidades
-            gltf.scene.position.set(0, 0, 0); // Ajusta la posición según tus necesidades
+            //gltf.scene.position.set(0, 0, 0); // Ajusta la posición según tus necesidades
 
             scene.add(gltf.scene)
          }, //load
